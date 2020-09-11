@@ -1,6 +1,3 @@
-require "effects/lib"
-
-
 -- HACK:
 -- AF_Shaderにすると、VideoObjectにアタッチできなくなる。
 -- これはTransitionにすることで回避できるが、
