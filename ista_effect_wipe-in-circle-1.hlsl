@@ -24,7 +24,7 @@ float4 main(
     float2 pos2  = (uv - 0.5) * pos.zw;
     float radius = length(pos2);
     if(radius > targetRadius) {
-      color.a = 1;
+      color.a = 0;
     }
     return ApplyBasicParamater(pos, color);
 }
