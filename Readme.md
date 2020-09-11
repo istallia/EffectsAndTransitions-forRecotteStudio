@@ -1,11 +1,11 @@
 # Effects & Transitions for Recotte Studio
 
 これらはRecotte Studioのために作成したエフェクトやトランジションたちです。  
-[うぷはし氏の作品](wallstudio/RecotteShader)から`util.hlsl`を使用しています。(おかげさまで簡単にシェーダ書けました)
+[うぷはし氏の作品](https://github.com/wallstudio/RecotteShader)から`util.hlsl`を使用しています。(おかげさまで簡単にシェーダ書けました)
 
 ## 導入
 
-1. [Releases](istallia/EffectsAndTransitions-forRecotteStudio/releases)から最新のものをダウンロード
+1. [Releases](https://github.com/istallia/EffectsAndTransitions-forRecotteStudio/releases)から最新のものをダウンロード
 2. ダウンロードしたzipを展開する
 3. Recotte Studioのインストールフォルダを探し、`～\RecotteStudio\effects`を開いておく
 4. 拡張子が`.cso`のファイルをそのフォルダにコピー
