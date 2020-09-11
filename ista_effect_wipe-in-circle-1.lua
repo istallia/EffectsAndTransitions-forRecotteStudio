@@ -18,22 +18,21 @@ function GetInfo()
 		shader = {
 			ps = "../ISTA_effect_wipe-in-circle-1.cso"
 		}
-	};
-	return info;
+	}
+	return info
 end
 	
 
 function InitEffect()
-	local label = {
-
-	};
-
-	SetDuration(0.5);
-	AddShaderProperty(" ", label);
+	SetDuration(0.5)
+	AddProperty(NewProperty("curve", { ja="時間曲線", en="TimeCurve"},  "curve"))
 end
 
 
 function ApplyEffect(effInfo, param)
-	param.shader = SetShaderProperty(" ", param);
-	return param;
+	local tt     = CurveProp("curve", effInfo.t)
+	local shader = GetShader("ps")
+	SetShaderFloat(shader, 0, tt)
+	param.shader = shader
+	return param
 end
