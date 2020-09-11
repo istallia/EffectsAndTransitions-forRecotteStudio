@@ -31,8 +31,11 @@ end
 
 function ApplyEffect(effInfo, param)
 	local tt     = CurveProp("curve", effInfo.t)
+	local rect   = param.bounds
 	local shader = GetShader("ps")
 	SetShaderFloat(shader, 0, tt)
+	SetShaderFloat(shader, 1, rect.w)
+	SetShaderFloat(shader, 2, rect.h)
 	param.shader = shader
 	return param
 end
