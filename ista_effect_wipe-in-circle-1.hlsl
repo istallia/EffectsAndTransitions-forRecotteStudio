@@ -8,17 +8,23 @@ float4 main(
    float2 uvp : UVP
    ) : SV_TARGET
 {
-    UnpackedParams p = unpack(
-        Float0, Float1, Float2, Float3, Float4, Float5,
-        Color0, Color1, Color2, Color3);
+    float effTime      = Float0;
+    float screenWidth  = pos.z;
+    float screenHeight = pos.w;
+    float maxRadius    = max(screenWidth, screenHeight) * 1.414;
+    float targetRadius = maxRadius * effTime;
+    float ratio        = screenWidth / screenHeight;
 
     #if PARAM_DEBUG
     float4 dump = dumpParam(p, pos.xy);
     if(dump.a > 0) return dump;
     #endif
 
-
     float4 color = tex(uv);
-    color = nega(color);
+    float2 pos2  = (uv - 0.5) * pos.zw;
+    float radius = length(pos2);
+    if(radius > targetRadius) {
+      color.a = 1;
+    }
     return ApplyBasicParamater(pos, color);
 }
