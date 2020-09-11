@@ -12,7 +12,7 @@ float4 main(
     float effTime      = Float0;
     float screenWidth  = objectSize.x;
     float screenHeight = objectSize.y;
-    float maxRadius    = max(screenWidth, screenHeight) * 1.414;
+    float maxRadius    = max(screenWidth, screenHeight) * 0.707;
     float targetRadius = maxRadius * effTime;
     float ratio        = screenWidth / screenHeight;
 
