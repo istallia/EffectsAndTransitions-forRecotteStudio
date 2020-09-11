@@ -10,11 +10,8 @@ float4 main(
 {
     float2 objectSize  = float2(Float1, Float2);
     float effTime      = Float0;
-    float screenWidth  = objectSize.x;
-    float screenHeight = objectSize.y;
-    float maxRadius    = max(screenWidth, screenHeight) * 0.707;
+    float maxRadius    = length(objectSize) / 2;
     float targetRadius = maxRadius * effTime;
-    float ratio        = screenWidth / screenHeight;
 
     #if PARAM_DEBUG
     float4 dump = dumpParam(p, pos.xy);
@@ -22,7 +19,7 @@ float4 main(
     #endif
 
     float4 color = tex(uv);
-    float2 pos2  = (uv - 0.5) * objectSize.xy;
+    float2 pos2  = (uvp - 0.5) * objectSize;
     float radius = length(pos2);
     if(radius > targetRadius) {
       color.a = 0;
