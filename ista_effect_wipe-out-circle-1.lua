@@ -8,15 +8,15 @@ require "effects/lib"
 -- その為、こちらでShaderの設定をし、TransitionでGetShaderして描画するようにしている。
 function GetInfo()
 	local info = {
-		name = "ISTA_effect_wipe-in-circle-1",
+		name = "ISTA_effect_wipe-out-circle-1",
 		displayname = {
-			en = "ISTA_effect_wipe-in-circle-1",
-			ja = "ISTA_ワイプイン(円形/外側)"
+			en = "ISTA_effect_wipe-out-circle-1",
+			ja = "ISTA_ワイプアウト(円形/外側)"
 		},
-		tag = "in",
+		tag = "out",
 		-- affects = AF_Shader, 
 		shader = {
-			ps = "../ISTA_effect_wipe-in-circle-1.cso"
+			ps = "../ISTA_effect_wipe-in-circle-2.cso"
 		}
 	}
 	return info

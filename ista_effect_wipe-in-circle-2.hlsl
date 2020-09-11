@@ -21,7 +21,7 @@ float4 main(
     float4 color = tex(uv);
     float2 pos2  = (uvp - 0.5) * objectSize;
     float radius = length(pos2);
-    if(radius > targetRadius) {
+    if(radius < targetRadius) {
       color.a = 0;
     }
     return ApplyBasicParamater(pos, color);
