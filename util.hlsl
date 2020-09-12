@@ -1,3 +1,8 @@
+/*
+ * MIT License
+ * Copyright (c) 2020 うぷはし
+ */
+
 #define SEED0 457.427
 #define SEED1 117.7278
 #define SEED2 743.2872
