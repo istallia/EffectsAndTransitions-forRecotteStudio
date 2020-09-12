@@ -10,7 +10,7 @@ function GetInfo()
 			en = "ISTA_effect_frosted-glass",
 			ja = "ISTA_すりガラス"
 		},
-		tag = "in",
+		tag = "video",
 		-- affects = AF_Shader, 
 		shader = {
 			ps = "../ISTA_effect_frosted-glass.cso"
@@ -22,17 +22,15 @@ end
 
 function InitEffect()
 	SetDuration(0.5)
-	AddProperty(NewProperty("curve", { ja="時間曲線", en="TimeCurve"},  "curve"))
+	AddProperty(NewProperty("err", { ja="拡散範囲[px]", en="error[px]"},  "int", nil, 10))
 end
 
 
 function ApplyEffect(effInfo, param)
 	local tt     = CurveProp("curve", effInfo.t)
-	local rect   = param.bounds
+	local err    = GetProperty("err")
 	local shader = GetShader("ps")
-	SetShaderFloat(shader, 0, tt)
-	SetShaderFloat(shader, 1, rect.w)
-	SetShaderFloat(shader, 2, rect.h)
+	SetShaderFloat(shader, 0, err)
 	param.shader = shader
 	return param
 end
