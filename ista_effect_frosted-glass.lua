@@ -27,7 +27,6 @@ end
 
 
 function ApplyEffect(effInfo, param)
-	local tt     = CurveProp("curve", effInfo.t)
 	local err    = GetProperty("err")
 	local shader = GetShader("ps")
 	SetShaderFloat(shader, 0, err)

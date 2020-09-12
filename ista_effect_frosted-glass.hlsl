@@ -8,7 +8,7 @@ float4 main(
   float2 uvp : UVP
   ) : SV_TARGET
 {
-  float err_px       = Float0;
+  float err_px = Float0;
 
   #if PARAM_DEBUG
   float4 dump = dumpParam(p, pos.xy);
@@ -17,7 +17,7 @@ float4 main(
 
   static float2 for_err_uv = float2(3.14, 1.414);
   float2 err_uv            = float2(rand(uv), rand(reflect(uv, for_err_uv)));
-  err_uv                   = err_uv * float2(err_px/pos.z, err_px/pos.w);
+  err_uv                   = err_uv * float2(err_px/pos.x, err_px/pos.y);
   float4 color             = tex(uv+err_uv);
   return ApplyBasicParamater(pos, color);
 }
