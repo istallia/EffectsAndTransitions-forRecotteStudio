@@ -22,7 +22,7 @@ end
 
 function InitEffect()
 	SetDuration(0.5)
-	AddProperty(NewProperty("err", { ja="拡散範囲[px]", en="error[px]"},  "int", nil, 10))
+	AddProperty(NewProperty("err", { ja="拡散範囲[px]", en="error[px]"},  "int", nil, 5))
 end
 
 

@@ -16,7 +16,7 @@ float4 main(
   #endif
 
   static float2 for_err_uv = float2(3.14, 1.414);
-  float2 err_uv            = float2(rand(uv), rand(reflect(uv, for_err_uv)));
+  float2 err_uv            = float2(rand(uv), rand(reflect(uv, for_err_uv))) * 2 - 1;
   err_uv                   = err_uv * float2(err_px/pos.x, err_px/pos.y);
   float4 color             = tex(uv+err_uv);
   return ApplyBasicParamater(pos, color);
