@@ -2,14 +2,22 @@
 
 #define PARAM_DEBUG 0
 
-	float4 main( 
+float maxRGB(float4 color) {
+	return max(max(color.r, color.g), color.b);
+}
+float minRGB(float4 color) {
+	return min(min(color.r, color.g), color.b);
+}
+
+float4 main( 
 	float4 pos : SV_POSITION, // 正規化されてない
 	float2 uv  : UV,
 	float2 uvp : UVP
 ) : SV_TARGET
 {
-	float min_v = Float0;
-	float max_v = Float1;
+	float min_v = min(max(Float0/100, 0), 1);
+	float max_v = min(max(Float1/100, 0), 1);
+	bool use_brightness = (Float2 > 0.5);
 	if(max_v < min_v) {
 		float tmp = max_v;
 		max_v = min_v;
@@ -24,11 +32,16 @@
 	#endif
 
 	float4 color       = tex(uv);
-	float4 color2      = rgb2Hsv(color);
-	float brightness   = (clamp(color2.z, min_v, max_v) - min_v) * color_gain;
+	float lightness    = 0;
+	if(use_brightness) {
+		lightness = maxRGB(color);
+	} else {
+		lightness = (maxRGB(color) + minRGB(color)) / 2;
+	}
+	lightness          = (clamp(lightness, min_v, max_v) - min_v) * color_gain;
 	float2 pattern_pos = asuint(trunc( fmod(uv*pos.xy, float2(4,4)) ));
 	float threshold    = pattern[pattern_pos.y][pattern_pos.x];
-	if(brightness > threshold) {
+	if(lightness > threshold) {
 		color = WHITE;
 	} else {
 		color = BLACK;

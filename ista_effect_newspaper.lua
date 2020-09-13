@@ -21,18 +21,21 @@ end
 	
 
 function InitEffect()
-	SetDuration(0.5)
-	AddProperty(NewProperty("min_v", { ja="最低の明るさ(0～1)", en="Min Brightness(0～1)"},  "float", nil, 0))
-	AddProperty(NewProperty("max_v", { ja="最高の明るさ(0～1)", en="Max Brightness(0～1)"},  "float", nil, 1))
+	SetDuration(2)
+	AddProperty(NewProperty("min_v", { ja="最低の明るさ(0～100)", en="Min Brightness(0～100)"},  "float", nil, 0))
+	AddProperty(NewProperty("max_v", { ja="最高の明るさ(0～100)", en="Max Brightness(0～100)"},  "float", nil, 100))
+	AddProperty(NewProperty("hsv", {ja="輝度の代わりに明度を使う(1でYes)", en="Use brightness instead of lightness (Yes = 1)"}, "int", nil, 0))
 end
 
 
 function ApplyEffect(effInfo, param)
 	local min_v  = GetProperty("min_v")
 	local max_v  = GetProperty("max_v")
+	local is_hsv = GetProperty("hsv")
 	local shader = GetShader("ps")
 	SetShaderFloat(shader, 0, min_v)
 	SetShaderFloat(shader, 1, max_v)
+	SetShaderFloat(shader, 2, is_hsv)
 	param.shader = shader
 	return param
 end
