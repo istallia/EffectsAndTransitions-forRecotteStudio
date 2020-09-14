@@ -35,10 +35,6 @@ function InitEffect()
 	AddProperty(NewProperty("a3_y", {ja="範囲3 Y[px]", en="Area3 Y[px]"}, "int", nil, 0))
 	AddProperty(NewProperty("a3_w", {ja="範囲3 幅[px]", en="Area3 Width[px]"}, "int", nil, 0))
 	AddProperty(NewProperty("a3_h", {ja="範囲3 高さ[px]", en="Area3 Height[px]"}, "int", nil, 0))
-	AddProperty(NewProperty("a4_x", {ja="範囲4 X[px]", en="Area4 X[px]"}, "int", nil, 0))
-	AddProperty(NewProperty("a4_y", {ja="範囲4 Y[px]", en="Area4 Y[px]"}, "int", nil, 0))
-	AddProperty(NewProperty("a4_w", {ja="範囲4 幅[px]", en="Area4 Width[px]"}, "int", nil, 0))
-	AddProperty(NewProperty("a4_h", {ja="範囲4 高さ[px]", en="Area4 Height[px]"}, "int", nil, 0))
 	AddInOutTimeProperties()
 	AddProperty(NewProperty("crop", { ja="ズーム範囲", en="Range"}, "rect", "crop_rate", Rect(0,0,100,100)))
 end
@@ -58,14 +54,15 @@ function ApplyEffect(effInfo, param)
 	local a3_y   = GetProperty('a3_y')
 	local a3_w   = GetProperty('a3_w')
 	local a3_h   = GetProperty('a3_h')
-	local a4_x   = GetProperty('a4_x')
-	local a4_y   = GetProperty('a4_y')
-	local a4_w   = GetProperty('a4_w')
-	local a4_h   = GetProperty('a4_h')
+	local screen = param.bounds
+	local s_x    = screen.x -- シェーダ内で正規化しなくとも、posがpx単位なので直接比較してやればいいかも？
+	local s_y    = screen.y -- でもパラメータが4セットもあると長い、長すぎる
+	local s_w    = screen.w
+	local s_h    = screen.h
 	local a1     = {r=a1_x, g=a1_y, b=a1_w, a=a1_h}
 	local a2     = {r=a2_x, g=a2_y, b=a2_w, a=a2_h}
 	local a3     = {r=a3_x, g=a3_y, b=a3_w, a=a3_h}
-	local a4     = {r=a4_x, g=a4_y, b=a4_w, a=a4_h}
+	local a4     = {r=s_x, g=s_y, b=s_w, a=s_h}
 	local zoom_a = GetProperty("crop")
 	local t      = GetEffectLevelByTimeProperties(effInfo)
 	local shader = GetShader("ps")
