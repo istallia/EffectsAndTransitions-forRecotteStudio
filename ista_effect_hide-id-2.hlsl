@@ -16,7 +16,7 @@ float4 main(
   float2 uvp : UVP
   ) : SV_TARGET
 {
-  float err_px  = Float0;
+  float len     = Float0;
   float time    = Float1;
   float4 zoom_a = float4(Float2, Float3, Float4, Float5);
   float4 bounds = Color3;
@@ -34,10 +34,8 @@ float4 main(
 
   float4 color = float4(0, 0, 0, 0);
   if(in_area(uv2, a1) || in_area(uv2, a2) || in_area(uv2, a3)) {
-    static float2 for_err_uv = float2(3.14, 1.414);
-    float2 err_uv            = float2(rand(uv2), rand(reflect(uv2, for_err_uv))) * 2 - 1;
-    err_uv                   = err_uv * float2(err_px/norm.x, err_px/norm.y);
-    color                    = tex(frac(uv2+err_uv+1));
+    float2 uv3 = (trunc(uv2*norm.xy/float2(len,len)) * float2(len,len) + len/2) / norm.xy;
+    color      = tex(uv3);
   } else {
     color = tex(uv2);
   }
