@@ -28,8 +28,13 @@ end
 
 function ApplyEffect(effInfo, param)
 	local err    = GetProperty("err")
+	local rect   = param.bounds
+	local n_x    = rect.w
+	local n_y    = rect.h
 	local shader = GetShader("ps")
 	SetShaderFloat(shader, 0, err)
+	SetShaderFloat(shader, 1, n_x)
+	SetShaderFloat(shader, 2, n_y)
 	param.shader = shader
 	return param
 end

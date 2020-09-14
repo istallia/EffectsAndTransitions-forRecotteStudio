@@ -15,8 +15,10 @@ float4 main(
 	float2 uvp : UVP
 ) : SV_TARGET
 {
-	float min_v = min(max(Float0/100, 0), 1);
-	float max_v = min(max(Float1/100, 0), 1);
+	float n_x           = Float1;
+	float n_y           = Float2;
+	float min_v         = min(max(Float0/100, 0), 1);
+	float max_v         = min(max(Float1/100, 0), 1);
 	bool use_brightness = (Float2 > 0.5);
 	if(max_v < min_v) {
 		float tmp = max_v;
@@ -39,7 +41,7 @@ float4 main(
 		lightness = (maxRGB(color) + minRGB(color)) / 2;
 	}
 	lightness          = (clamp(lightness, min_v, max_v) - min_v) * color_gain;
-	float2 pattern_pos = asuint(trunc( fmod(uv*pos.xy, float2(4,4)) ));
+	float2 pattern_pos = asuint(trunc( fmod(uv*float2(n_x,n_y), float2(4,4)) ));
 	float threshold    = pattern[pattern_pos.y][pattern_pos.x];
 	if(lightness > threshold) {
 		color = WHITE;

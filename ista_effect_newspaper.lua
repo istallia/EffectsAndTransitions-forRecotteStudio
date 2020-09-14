@@ -32,10 +32,15 @@ function ApplyEffect(effInfo, param)
 	local min_v  = GetProperty("min_v")
 	local max_v  = GetProperty("max_v")
 	local is_hsv = GetProperty("hsv")
+	local rect   = param.bounds
+	local n_x    = rect.w
+	local n_y    = rect.h
 	local shader = GetShader("ps")
 	SetShaderFloat(shader, 0, min_v)
 	SetShaderFloat(shader, 1, max_v)
 	SetShaderFloat(shader, 2, is_hsv)
+	SetShaderFloat(shader, 3, n_x)
+	SetShaderFloat(shader, 4, n_y)
 	param.shader = shader
 	return param
 end
