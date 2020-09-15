@@ -7,14 +7,13 @@
 
 1. [Releases](https://github.com/istallia/EffectsAndTransitions-forRecotteStudio/releases)から最新のものをダウンロード
 2. ダウンロードしたzipを展開する
-3. Recotte Studioのインストールフォルダを探し、`～\RecotteStudio\effects`を開いておく
-4. 拡張子が`.cso`のファイルをそのフォルダにコピー
-5. そのフォルダに`effects`フォルダがあるので、それを開く
-6. 拡張子が`.lua`と`.png`のファイルをそのフォルダにコピー
+3. install.batを起動(管理者権限を要求されます)
+4. (なければ)うぷはし氏のエフェクトもインストールするよう案内されるので、それに従ってインストールする
 
 作業後、Recotte Studioを起動すればエフェクトが追加されています。
 
-Recotte Studioは何も設定を変えていないなら`C:\Program Files\RecotteStudio`に入ってるはずです。  
+Recotte Studioは何も設定を変えていないなら`C:\Program Files\RecotteStudio`に入ってるはずです。その想定でインストーラを作ってます。  
+インストールフォルダを変更している場合は、Recotte Studioのファイルパスを変えてから実行してみてください。  
 アイコンが雑で気になる場合は自分で描いてください(丸投げ)
 
 ## 機能
