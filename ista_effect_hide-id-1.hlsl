@@ -21,9 +21,9 @@ float4 main(
   float4 zoom_a = float4(Float2, Float3, Float4, Float5);
   float4 bounds = Color3;
   float4 norm   = float4(bounds.z, bounds.w, bounds.z, bounds.w);
-  float4 a1     = Color0 / norm;
-  float4 a2     = Color1 / norm;
-  float4 a3     = Color2 / norm;
+  float4 a1     = Color0 / float2(100, 100);
+  float4 a2     = Color1 / float2(100, 100);
+  float4 a3     = Color2 / float2(100, 100);
 
   #if PARAM_DEBUG
   float4 dump = dumpParam(p, pos.xy);
