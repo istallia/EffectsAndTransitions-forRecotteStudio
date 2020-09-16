@@ -21,8 +21,8 @@ end
 	
 
 function InitEffect()
-	-- SetDuration(2)
-	-- AddProperty(NewProperty("err", {ja="粗さ[px]", en="error[px]"},  "int", nil, 4))
+	SetDuration(2)
+	AddProperty(NewProperty("err", {ja="粗さ[px]", en="error[px]"},  "int", nil, 4))
 	-- AddProperty(NewProperty("a1_x", {ja="範囲1 X[px]", en="Area1 X[px]"}, "int", nil, 0))
 	-- AddProperty(NewProperty("a1_y", {ja="範囲1 Y[px]", en="Area1 Y[px]"}, "int", nil, 0))
 	-- AddProperty(NewProperty("a1_w", {ja="範囲1 幅[px]", en="Area1 Width[px]"}, "int", nil, 4096))
