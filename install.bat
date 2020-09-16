@@ -31,7 +31,7 @@ rem xcopy /s *_ista_*.lua "%recotte_studio%%transition_path%\"
 rem xcopy /s *_ista_*.png "%recotte_studio%%transition_path%\"
 
 rem uh_dummyがない場合に案内を表示する
-if not exist "%recotte_studio%%transition_path%\uh_dummy_2.lua" (
+if not exist "%recotte_studio%%transition_path%\uh_dummy.lua" (
 	choice /m "エフェクトを動画に対して適用するには、うぷはし氏のuh_dummyエフェクトが必要です。ダウンロードページを開きますか？ "
 	if !errorlevel! equ 1 (
 		start https://github.com/wallstudio/RecotteShader/releases/latest
